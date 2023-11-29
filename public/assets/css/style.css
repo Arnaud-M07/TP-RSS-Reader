@@ -16,3 +16,14 @@ width: 300px;
 
 
 /* Maxime */
+
+:root {
+    --write: #f1f1f1;
+    --background: #262626;
+}
+
+
+body{
+    background-color: var(--background);
+    color: var(--write);
+}
