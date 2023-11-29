@@ -56,55 +56,59 @@
 
 
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $choixUtilisateur = isset($_POST["choix_flux_rss"]) ? $_POST["choix_flux_rss"] : [];
 
-            
-            if (count($choixUtilisateur) > 3) {
-                echo "Erreur : Vous ne pouvez choisir que jusqu'à 3 flux RSS.";
-            } else {
-                
-                foreach ($choixUtilisateur as $choix) {
-                    switch ($choix) {
-                        case "choix1":
-                            $urlChoisi = "https://www.lemonde.fr/sport/rss_full.xml";
-                            chargerFluxRSS($urlChoisi);
-                            break;
-                        case "choix2":
-                            $urlChoisi = "https://www.lemonde.fr/planete/rss_full.xml";
-                            chargerFluxRSS($urlChoisi);
-                            break;
-                        case "choix3":
-                            $urlChoisi = "https://www.lemonde.fr/pixels/rss_full.xml";
-                            chargerFluxRSS($urlChoisi);
-                            break;
-                        case "choix4":
-                            $urlChoisi = "https://www.lemonde.fr/economie/rss_full.xml";
-                            chargerFluxRSS($urlChoisi);
-                            break;
-                        case "choix5":
-                            $urlChoisi = "https://www.lemonde.fr/sciences/rss_full.xml";
-                            chargerFluxRSS($urlChoisi);
-                            break;
-                        default:
-                            echo "Erreur : choix non valide.";
-                    }
-                }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $choixUtilisateur = isset($_POST["choix_flux_rss"]) ? $_POST["choix_flux_rss"] : [];
+
+    
+    if (count($choixUtilisateur) > 3) {
+        echo "Erreur : Vous ne pouvez choisir que jusqu'à 3 flux RSS.";
+    } else {
+        
+        //passe dans le switch en fonction du nombre de choix de l'utilisateur pour afficher le cas correspondant
+        foreach ($choixUtilisateur as $choix) {
+            switch ($choix) {
+                case "choix1":
+                    $urlChoice = "https://www.lemonde.fr/sport/rss_full.xml";
+                    chargerFluxRSS($urlChoice);
+                    break;
+                case "choix2":
+                    $urlChoice = "https://www.lemonde.fr/planete/rss_full.xml";
+                    chargerFluxRSS($urlChoice);
+                    break;
+                case "choix3":
+                    $urlChoice = "https://www.lemonde.fr/pixels/rss_full.xml";
+                    chargerFluxRSS($urlChoice);
+                    break;
+                case "choix4":
+                    $urlChoice = "https://www.lemonde.fr/economie/rss_full.xml";
+                    chargerFluxRSS($urlChoice);
+                    break;
+                case "choix5":
+                    $urlChoice = "https://www.lemonde.fr/sciences/rss_full.xml";
+                    chargerFluxRSS($urlChoice);
+                    break;
+                default:
+                    echo "Erreur : choix non valide.";
             }
         }
-        ?>
+    }
+}
+?>
 
-        <!-- Formulaire HTML -->
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label>Choisissez jusqu'à 3 flux RSS :</label><br>
-            <input type="checkbox" name="choix_flux_rss[]" value="choix1"> Sport<br>
-            <input type="checkbox" name="choix_flux_rss[]" value="choix2"> Planète<br>
-            <input type="checkbox" name="choix_flux_rss[]" value="choix3"> Geek<br>
-            <input type="checkbox" name="choix_flux_rss[]" value="choix4"> Économie<br>
-            <input type="checkbox" name="choix_flux_rss[]" value="choix5"> Sciences<br>
+<!-- Formulaire HTML -->
+<!-- php self redirige vers lui même -->
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <label>Choisissez jusqu'à 3 flux RSS :</label><br>
+    <input type="checkbox" name="choix_flux_rss[]" value="choix1"> Sport<br>
+    <input type="checkbox" name="choix_flux_rss[]" value="choix2"> Planète<br>
+    <input type="checkbox" name="choix_flux_rss[]" value="choix3"> Geek<br>
+    <input type="checkbox" name="choix_flux_rss[]" value="choix4"> Économie<br>
+    <input type="checkbox" name="choix_flux_rss[]" value="choix5"> Sciences<br>
 
-            <input type="submit" value="Afficher les flux RSS">
-        </form>
+    <input type="submit" value="Afficher les flux RSS">
+</form>
 
 
 </body>
