@@ -5,8 +5,13 @@ body {
 
 
 /* Thibaud */
+.img-article{
+background-image:url(/public/assets/img/test.jpg);
+height: 300px;
+width: 300px;
 
 
+}
 /* Arnaud */
 
 
